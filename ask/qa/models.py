@@ -3,6 +3,15 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
+class QuestionManager(models.Manager):
+    def new_q(self):
+        pass
+
+    def popular(self):
+        pass
+
+
 class Question(models.Model):
     objects = QuestionManager()
     title = models.CharField(max_length=255)
@@ -18,11 +27,3 @@ class Answer(models.Model):
     added_at = models.DateTimeField(auto_now_add=True, blank=True)
     question = models.ForeignKey(Question)
     author = models.OneToOneField(User)
-
-
-class QuestionManager(models.Manager):
-    def new(self):
-        pass
-    def popular(self):
-        pass
-

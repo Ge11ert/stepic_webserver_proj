@@ -60,7 +60,9 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.path.join(BASE_DIR, 'mydb'),
+        'NAME': 'mydb',
+        'USER': 'root',
+        'HOST': 'localhost',
     }
 }
 

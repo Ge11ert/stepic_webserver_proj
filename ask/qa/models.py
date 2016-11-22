@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 
 
 class QuestionManager(models.Manager):
-    def new_q(self):
-        pass
+    def new(self):
+        return  Question.objects.order_by('-id')
 
     def popular(self):
-        pass
+        return self.order_by('-rating')
 
 
 class Question(models.Model):

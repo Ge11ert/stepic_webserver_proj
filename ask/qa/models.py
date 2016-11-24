@@ -19,7 +19,7 @@ class Question(models.Model):
     added_at = models.DateTimeField(auto_now_add=True, blank=True)
     rating = models.IntegerField(default=0)
     likes = models.ManyToManyField(User, related_name='question_like_user')
-    author = models.OneToOneField(User)
+    author = models.ForeignKey(User)
     
     def get_absolute_url(self) :
         return '/question/%d/' % self.pk
@@ -29,4 +29,4 @@ class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True, blank=True)
     question = models.ForeignKey(Question)
-    author = models.OneToOneField(User)
+    author = models.ForeignKey(User)

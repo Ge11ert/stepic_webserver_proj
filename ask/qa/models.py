@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 
 class QuestionManager(models.Manager):
     def new(self):
-        return  Question.objects.order_by('-id')
+        return  Question.objects.all().order_by('-id')
 
     def popular(self):
-        return self.order_by('-rating')
+        return Question.objects.all().order_by('-rating')
 
 
 class Question(models.Model):
@@ -20,6 +20,9 @@ class Question(models.Model):
     rating = models.IntegerField(default=0)
     likes = models.ManyToManyField(User, related_name='question_like_user')
     author = models.OneToOneField(User)
+    
+    def get_absolute_url(self) :
+        return '/question/%d/' % self.pk
 
 
 class Answer(models.Model):
